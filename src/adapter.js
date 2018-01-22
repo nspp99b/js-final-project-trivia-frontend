@@ -11,19 +11,35 @@ class Adapter {
         // responses: []
       //}
 
-  static handleStartGame(){
+  static handleStartGame(event){
+    event.preventDefault()
+    Adapter.handleFetchGame(event)
+    Adapter.handleFetchQuestions()
+  }
 
-    let data = {name: "Joe"}
-
-    fetch('http://localhost:3000/api/v1/games',
+  static handleFetchQuestions(){
+    return fetch('http://localhost:3000/api/v1/questions',
       {
-        method: 'Post',
+        //method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }//,
+        //body: JSON.stringify(data)
+      }).then(response => console.log(response.json()))
+  }
+
+  static handleFetchGame(event){
+    let data = {name: event.target.username.value}
+    return fetch('http://localhost:3000/api/v1/games',
+      {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify(data)
-      }).then(response => console.log(response.json()))
+      }).then(response => response.json())
     //post to create a new instance of game
     //fetch to get a the new instance
   }
