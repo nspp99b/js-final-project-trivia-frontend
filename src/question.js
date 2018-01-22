@@ -10,10 +10,7 @@ const Question = (() => {
     }
 
   renderInnerHTML() {
-    return `
-
-
-    `
+    return `<div>${this.content}</div>`
   }
 
   static all() {

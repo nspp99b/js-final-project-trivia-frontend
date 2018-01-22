@@ -9,6 +9,10 @@ const Game = (() => {
       all.push(this)
     }
 
+    renderInnerHTML() {
+      return `<div>${this.name}</div>`
+    }
+
     static all() {
       return all
     }
