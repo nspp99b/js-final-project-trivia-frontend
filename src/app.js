@@ -8,8 +8,6 @@ const App = (() => {
       App.selectLRightBar = document.getElementById('right-bar')
       //add event listener to form
       $("#game-form").submit(App.handleStartGame);
-      //display first question
-
     }
 
     static handleStartGame(event){
@@ -31,6 +29,18 @@ const App = (() => {
         App.selectMainBar.innerHTML = q.renderInnerHTML()
       })
     }
+
+    static isCorrect(event) {
+      event.preventDefault()
+      const q = document.getElementById('question')
+      q.renderNextQuestion()
+    }
+
+    static completeGame() {
+      App.selectLeftBar.innerHTML = `<p> You're done!</p>`
+      App.selectMainBar.innerHTML = `<p> Congratulations!</p>`
+    }
+
   }
 
 })()
@@ -38,6 +48,9 @@ const App = (() => {
 $( document ).ready(function() {
     console.log( "ready!" );
     App.init();
+
+    $(".isCorrect").click(isCorrect)
+    $(".isCorrect-hover").hover(isCorrect)
 
     // document.getElementById("start-game-button").addEventListener('click', Adapter.handleStartGame);
 });

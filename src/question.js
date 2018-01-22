@@ -10,11 +10,20 @@ const Question = (() => {
     }
 
   renderInnerHTML() {
-    return `<div>${this.content}</div>`
+    return `<div id="question" data-id="${this.id}">${this.content}</div>`
   }
 
   static all() {
     return all
+  }
+
+  renderNextQuestion(){
+    if (this.id < Question.all().length) {
+      return Question.all()[this.id].renderInnerHTML();
+    } else {
+      return App.completeGame()
+    }
+
   }
 }
 })()
