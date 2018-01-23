@@ -27,13 +27,17 @@ const App = (() => {
         }
         let q = Question.all()[0]
         App.selectMainBar.innerHTML = q.renderInnerHTML()
+        $(".is-correct").click(App.isCorrect)
+        // $(".isCorrect-hover").hover(isCorrect)
       })
     }
 
     static isCorrect(event) {
       event.preventDefault()
-      const q = document.getElementById('question')
-      q.renderNextQuestion()
+      let q = parseInt(document.getElementById('question').dataset.id)
+      let next = Question.all().find(question => question.id == q)
+      App.selectMainBar.innerHTML = next.renderNextQuestion()
+      $(".is-correct").click(App.isCorrect)
     }
 
     static completeGame() {
@@ -49,8 +53,7 @@ $( document ).ready(function() {
     console.log( "ready!" );
     App.init();
 
-    $(".isCorrect").click(isCorrect)
-    $(".isCorrect-hover").hover(isCorrect)
+    // $(".isCorrect").click(isCorrect)
+    // $(".isCorrect-hover").hover(isCorrect)
 
-    // document.getElementById("start-game-button").addEventListener('click', Adapter.handleStartGame);
 });
