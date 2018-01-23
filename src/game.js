@@ -13,13 +13,8 @@ const Game = (() => {
       return `<div data-id=${this.id}>${this.name}</div>`
     }
 
-    renderEndGame() {
-      Adapter.handleFetchGameUpdate(this.id)
-        .then((jsonGame) => {
-          console.log(this)
-          let g = new Game(jsonGame);
-          App.selectLeftBar.innerHTML = g.renderInnerHTML()
-        })
+    renderFinalScore() {
+      return `<div class="end-game">Score: ${this.score}</div>`
     }
 
     static all() {

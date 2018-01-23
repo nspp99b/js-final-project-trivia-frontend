@@ -32,10 +32,12 @@ const App = (() => {
     }
 
     static addAnswerListeners() {
-      let quesType = document.getElementById('question').className
-      if (quesType === "null") {
-        $(".is-correct").click(App.isCorrect)
-        $(".is-incorrect").click(App.isIncorrect)
+      if (document.getElementById('question')) {
+        let quesType = document.getElementById('question').className
+        if (quesType === "null") {
+          $(".is-correct").click(App.isCorrect)
+          $(".is-incorrect").click(App.isIncorrect)
+        }
       }
     }
 
@@ -72,15 +74,21 @@ const App = (() => {
     static completeGame() {
       let gameId = parseInt(App.selectLeftBar.firstChild.dataset.id)
       let gameObj = Game.all().find(g => g.id == gameId)
-      App.selectLeftBar.innerHTML = `You're done!`;
-      return App.selectMainBar.innerHTML = gameObj.renderEndGame();
-      //call renderEndGame on the current game
-      //sends a fetch (patch to current game id)
-      //controller computes final score of current game,
-      //updates game object and returns json to us
-      //we make some html out of that and return it
-      //create a button to start a new game,
-      //attach listener for that button
+      let newGameButton = document.createElement('button')
+      newGameButton.type = "button"
+      newGameButton.innerText = "Start New Game"
+
+      Adapter.handleFetchGameUpdate(gameId)
+        .then((jsonGame) => {
+          gameObj.score = jsonGame.score
+          App.selectMainBar.innerHTML = gameObj.renderFinalScore()
+          App.selectMainBar.appendChild(newGameButton)
+          newGameButton.addEventListener('click', App.handleWindowReload)
+        })
+    }
+
+    static handleWindowReload() {
+      location.reload()
     }
 
   }

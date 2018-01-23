@@ -24,14 +24,14 @@ class Adapter {
   }
 
   static handleFetchGameUpdate(gameId) {
-    return fetch(`http://localhost:3000/api/v1/game/ + ${gameId}`,
+    const url = `http://localhost:3000/api/v1/games/${gameId}`
+    return fetch(url,
       {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
+        }
       }).then(response => response.json())
   }
 
