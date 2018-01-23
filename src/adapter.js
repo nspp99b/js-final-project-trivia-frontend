@@ -23,6 +23,19 @@ class Adapter {
       }).then(response => response.json())
   }
 
+  static handleFetchResponseCreate(gameId, quesId, isCorrect) {
+    let data = {game_id: gameId, question_id: quesId, is_correct: isCorrect}
+    return fetch('http://localhost:3000/api/v1/responses',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+  }
+
   static handleEndGame(){
 
   }

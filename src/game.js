@@ -10,7 +10,7 @@ const Game = (() => {
     }
 
     renderInnerHTML() {
-      return `<div>${this.name}</div>`
+      return `<div data-id=${this.id}>${this.name}</div>`
     }
 
     static all() {

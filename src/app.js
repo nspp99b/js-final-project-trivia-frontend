@@ -6,7 +6,7 @@ const App = (() => {
       App.selectLeftBar = document.getElementById('left-bar')
       App.selectMainBar = document.getElementById('main-bar')
       App.selectLRightBar = document.getElementById('right-bar')
-      //add event listener to form
+      //add event listener to new game form
       $("#game-form").submit(App.handleStartGame);
     }
 
@@ -32,18 +32,22 @@ const App = (() => {
     }
 
     static addAnswerListeners() {
-      $(".is-correct").click(App.isCorrect)
-      $(".is-incorrect").click(App.isIncorrect)
+      let quesType = document.getElementById('question').className
+      if (quesType === "null") {
+        $(".is-correct").click(App.isCorrect)
+        $(".is-incorrect").click(App.isIncorrect)
+      }
     }
 
     static isCorrect(event) {
       event.preventDefault()
-      let q = parseInt(document.getElementById('question').dataset.id)
-      let current = Question.all().find(question => question.id == q)
+      let gameId = parseInt(App.selectLeftBar.firstChild.dataset.id)
+      let quesId = parseInt(document.getElementById('question').dataset.id)
+      let quesObj = Question.all().find(question => question.id == quesId)
+      Adapter.handleFetchResponseCreate(gameId, quesId, true)
       App.displayIsCorrectMessage()
-      App.selectMainBar.innerHTML = current.renderNextQuestion()
+      App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
       App.addAnswerListeners()
-
     }
 
     static displayIsCorrectMessage() {
@@ -56,13 +60,25 @@ const App = (() => {
 
     static isIncorrect(event) {
       event.preventDefault()
+      let gameId = parseInt(App.selectLeftBar.firstChild.dataset.id)
+      let quesId = parseInt(document.getElementById('question').dataset.id)
+      let quesObj = Question.all().find(question => question.id == quesId)
+      Adapter.handleFetchResponseCreate(gameId, quesId, false)
       App.displayIncorrectMessage()
-      App.completeGame()
+      App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
+      App.addAnswerListeners()
     }
 
     static completeGame() {
       App.selectLeftBar.innerHTML = `You're done!`;
-      return App.selectMainBar.innerHTML = "GAME OVER";
+      return App.selectMainBar.innerHTML = Game.renderEndGame();
+      //call renderEndGame on the current game
+      //sends a fetch (patch to current game id)
+      //controller computes final score of current game,
+      //updates game object and returns json to us
+      //we make some html out of that and return it
+      //create a button to start a new game,
+      //attach listener for that button
     }
 
   }
