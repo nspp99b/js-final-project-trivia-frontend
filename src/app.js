@@ -35,14 +35,14 @@ const App = (() => {
     static isCorrect(event) {
       event.preventDefault()
       let q = parseInt(document.getElementById('question').dataset.id)
-      let next = Question.all().find(question => question.id == q)
-      App.selectMainBar.innerHTML = next.renderNextQuestion()
+      let current = Question.all().find(question => question.id == q)
+      App.selectMainBar.innerHTML = current.renderNextQuestion()
       $(".is-correct").click(App.isCorrect)
     }
 
     static completeGame() {
-      App.selectLeftBar.innerHTML = `<p> You're done!</p>`
-      App.selectMainBar.innerHTML = `<p> Congratulations!</p>`
+      App.selectLeftBar.innerHTML = `<p>You're done!</p>`;
+      return "Congrats!";
     }
 
   }

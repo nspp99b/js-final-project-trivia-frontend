@@ -19,7 +19,6 @@ const Question = (() => {
   }
 
   renderNextQuestion() {
-    debugger
     if (this.id < Question.all().length) {
       return Question.all()[this.id].renderInnerHTML();
     } else {

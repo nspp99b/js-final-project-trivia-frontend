@@ -1,10 +1,15 @@
 #left-bar {
-  border-color: black;
+
 }
 
 #main-bar {
-  border-color: black
+
 }
 #right-bar {
-  border-color: black
+
+}
+
+button {
+ margin: 15px;
+ width: 150px
 }
