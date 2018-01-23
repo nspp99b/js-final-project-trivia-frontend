@@ -70,8 +70,10 @@ const App = (() => {
     }
 
     static completeGame() {
+      let gameId = parseInt(App.selectLeftBar.firstChild.dataset.id)
+      let gameObj = Game.all().find(g => g.id == gameId)
       App.selectLeftBar.innerHTML = `You're done!`;
-      return App.selectMainBar.innerHTML = Game.renderEndGame();
+      return App.selectMainBar.innerHTML = gameObj.renderEndGame();
       //call renderEndGame on the current game
       //sends a fetch (patch to current game id)
       //controller computes final score of current game,
