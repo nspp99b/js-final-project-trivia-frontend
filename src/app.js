@@ -34,11 +34,25 @@ const App = (() => {
     static addAnswerListeners() {
       if (document.getElementById('question')) {
         let quesType = document.getElementById('question').className
-        if (quesType === "null") {
+
+        if (document.getElementsByClassName('is-correct')) {
           $(".is-correct").click(App.isCorrect)
+        }
+        if (document.getElementsByClassName('is-incorrect')){
           $(".is-incorrect").click(App.isIncorrect)
         }
+        if ($(".is-correct-hover")){
+          $(".is-correct-hover").hover(App.isCorrect)
+        }
+        if ($(".is-incorrect-hover")){
+          $(".is-incorrect-hover").hover(App.isIncorrect)
+        }
       }
+    }
+
+
+    static checkPageForListeners(){
+      
     }
 
     static isCorrect(event) {
