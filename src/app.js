@@ -27,22 +27,42 @@ const App = (() => {
         }
         let q = Question.all()[0]
         App.selectMainBar.innerHTML = q.renderInnerHTML()
-        $(".is-correct").click(App.isCorrect)
-        // $(".isCorrect-hover").hover(isCorrect)
+        App.addAnswerListeners()
       })
+    }
+
+    static addAnswerListeners() {
+      $(".is-correct").click(App.isCorrect)
+      $(".is-incorrect").click(App.isIncorrect)
     }
 
     static isCorrect(event) {
       event.preventDefault()
       let q = parseInt(document.getElementById('question').dataset.id)
       let current = Question.all().find(question => question.id == q)
+      App.displayIsCorrectMessage()
       App.selectMainBar.innerHTML = current.renderNextQuestion()
-      $(".is-correct").click(App.isCorrect)
+      App.addAnswerListeners()
+
+    }
+
+    static displayIsCorrectMessage() {
+      alert("Correct!")
+    }
+
+    static displayIncorrectMessage() {
+      alert("WRONG!")
+    }
+
+    static isIncorrect(event) {
+      event.preventDefault()
+      App.displayIncorrectMessage()
+      App.completeGame()
     }
 
     static completeGame() {
-      App.selectLeftBar.innerHTML = `<p>You're done!</p>`;
-      return "Congrats!";
+      App.selectLeftBar.innerHTML = `You're done!`;
+      return App.selectMainBar.innerHTML = "GAME OVER";
     }
 
   }
@@ -52,8 +72,4 @@ const App = (() => {
 $( document ).ready(function() {
     console.log( "ready!" );
     App.init();
-
-    // $(".isCorrect").click(isCorrect)
-    // $(".isCorrect-hover").hover(isCorrect)
-
 });

@@ -11,7 +11,8 @@ const Question = (() => {
 
   renderInnerHTML() {
     return `<div id="question" data-id="${this.id}">${this.content}</div>
-    <div class="is-correct">Right Answer</div>`
+    <div class="is-correct">Right Answer</div>
+    <div class="is-incorrect">Wrong Answer</div>`
   }
 
   static all() {
