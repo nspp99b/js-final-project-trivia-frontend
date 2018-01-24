@@ -44,11 +44,7 @@ const App = (() => {
     }
 
     static startMaze(){
-      document.getElementById('end').addEventListener('pointerenter', App.isCorrect, { once: true})
-      //$(".is-incorrect-hover").hover(App.endMaze)
-      // $('.is-incorrect-hover').one('click', function(e) {
-      //
-      //   });
+      document.getElementById('end').addEventListener('pointerenter', App.isCorrect)
       let arr = document.getElementsByClassName('is-incorrect-hover')
       for (let el of arr) {
         el.addEventListener('pointerenter', App.endMaze, { once: true})

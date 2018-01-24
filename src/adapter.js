@@ -49,6 +49,6 @@ class Adapter {
   }
 
   static handleEndGame(){
-
+    
   }
 }
