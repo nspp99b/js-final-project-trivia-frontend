@@ -66,7 +66,7 @@ const App = (() => {
     }
 
     static startMinefield() {
-      document.getElementById('end').addEventListener('pointerenter', App.isCorrect)
+      document.getElementById('flag').addEventListener('pointerenter', App.isCorrect)
       let arr = document.getElementsByClassName('is-incorrect-hover')
       for (let el of arr) {
         el.addEventListener('pointerenter', App.endMinefield, { once: true})
