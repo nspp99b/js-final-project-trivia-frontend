@@ -32,24 +32,25 @@ const App = (() => {
     }
 
     static addAnswerListeners() {
-      let quesType = document.getElementById('question').className
-      if (quesType === "null") {
-        $(".is-correct").click(App.isCorrect)
-        $(".is-incorrect").click(App.isIncorrect)
-
-        if ($(".is-correct-hover")) {
-          $("#start").hover(App.startMaze)
+      if (document.getElementById('question')) {
+        if (document.getElementsByClassName('is-correct')) {
+          $(".is-correct").click(App.isCorrect)
+        }
+        if (document.getElementsByClassName('is-incorrect')) {
+          $(".is-incorrect").click(App.isIncorrect)
+        }
+        if ($(".start-maze-hover")) {
+          $(".start-maze-hover").hover(App.startMaze)
         }
       }
     }
 
-    static startMaze(){
+    static startMaze() {
       document.getElementById('end').addEventListener('pointerenter', App.isCorrect)
       let arr = document.getElementsByClassName('is-incorrect-hover')
       for (let el of arr) {
         el.addEventListener('pointerenter', App.endMaze, { once: true})
       }
-
     }
 
     static endMaze(e){
