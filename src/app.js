@@ -36,8 +36,35 @@ const App = (() => {
       if (quesType === "null") {
         $(".is-correct").click(App.isCorrect)
         $(".is-incorrect").click(App.isIncorrect)
+
+        if ($(".is-correct-hover")) {
+          $("#start").hover(App.startMaze)
+        }
       }
     }
+
+    static startMaze(){
+      document.getElementById('end').addEventListener('pointerenter', App.isCorrect, { once: true})
+      //$(".is-incorrect-hover").hover(App.endMaze)
+      // $('.is-incorrect-hover').one('click', function(e) {
+      //
+      //   });
+      let arr = document.getElementsByClassName('is-incorrect-hover')
+      for (let el of arr) {
+        el.addEventListener('pointerenter', App.endMaze, { once: true})
+      }
+
+    }
+
+    static endMaze(e){
+      let arr = document.getElementsByClassName('is-incorrect-hover')
+      for (let el of arr) {
+        el.removeEventListener('pointerenter', App.endMaze, { once: true})
+      }
+      App.isIncorrect(e);
+    }
+
+
 
     static isCorrect(event) {
       event.preventDefault()
