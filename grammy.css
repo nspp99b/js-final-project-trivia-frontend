@@ -1,0 +1,86 @@
+.text {
+  verticle-align: middle;
+  color: white;
+}
+.square-grammy {
+  width: 120px;
+  height: 80px;
+}
+.square-guy {
+  width: 100px;
+  height: 80px;
+}
+
+.square-large {
+  width: 200px;
+  height: 200px;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  text-align: center;
+  line-height:100px;
+
+}
+
+.circle-large {
+  width: 250px;
+  height: 250px;
+  border-radius: 250px;
+  text-align: center;
+  line-height:100px;
+}
+
+.answer:hover{
+  background-color: blue;
+}
+
+.position1{
+    position: absolute;
+    left: 100px;
+    top: 350px;
+}
+
+.position2{
+    position: relative;
+    left: 80%;
+    top: 30%;
+}
+
+.position3{
+    position: relative;
+    left: 30%;
+    top: 10%;
+}
+
+.position4{
+    position: relative;
+    left: 10%;
+    top: 30%;
+}
+
+.position5{
+    position: relative;
+    left: 50%;
+    top: 10px;
+}
+
+.position6{
+    position: relative;
+    left: 60%;
+    top: 100%;
+}
+
+/* div {
+  border: 2px solid green;
+} */
+
+.hidden img {
+  visibility: hidden;
+}
+
+.hidden:hover img {
+  visibility: visible;
+}
