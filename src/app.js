@@ -42,8 +42,12 @@ const App = (() => {
         if ($(".start-maze-hover")) {
           $(".start-maze-hover").hover(App.startMaze)
         }
+        if (document.getElementById("start-minefield")) {
+          document.addEventListener('pointermove', App.startMinefield, { once: true} )
+        }
       }
     }
+
 
     static startMaze() {
       document.getElementById('end').addEventListener('pointerenter', App.isCorrect)
@@ -61,7 +65,21 @@ const App = (() => {
       App.isIncorrect(e);
     }
 
+    static startMinefield() {
+      document.getElementById('end').addEventListener('pointerenter', App.isCorrect)
+      let arr = document.getElementsByClassName('is-incorrect-hover')
+      for (let el of arr) {
+        el.addEventListener('pointerenter', App.endMinefield, { once: true})
+      }
+    }
 
+    static endMinefield(e){
+      let arr = document.getElementsByClassName('is-incorrect-hover')
+      for (let el of arr) {
+        el.removeEventListener('pointerenter', App.endMinefield, { once: true});
+      }
+      setTimeout(function(){App.isIncorrect(e)}, 150)
+    }
 
     static isCorrect(event) {
       event.preventDefault()
