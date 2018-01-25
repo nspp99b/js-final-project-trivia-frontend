@@ -11,7 +11,7 @@ const Question = (() => {
     }
 
   renderInnerHTML() {
-    return `<div class="${this.category}" id="question" data-id="${this.id}">${this.content}</div>`
+    return `<div class="${this.category} center-block" id="question" data-id="${this.id}">${this.content}</div>`
   }
 
   static all() {

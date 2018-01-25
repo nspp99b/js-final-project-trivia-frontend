@@ -4,7 +4,7 @@ const App = (() => {
     static init() {
       //grab some elements
       App.selectGameForm = document.getElementById('game-form')
-      App.selectLeftBar = document.getElementById('left-bar')
+      App.selectGameHeader = document.getElementById('game-header')
       App.selectMainBar = document.getElementById('main-bar')
       //add event listener to new game form
       $("#game-form").submit(App.handleStartGame);
@@ -17,7 +17,7 @@ const App = (() => {
       Adapter.handleFetchGame(event)
       .then((jsonGame) => {
         let g = new Game(jsonGame);
-        App.selectLeftBar.innerHTML = g.renderInnerHTML()
+        App.selectGameHeader.innerHTML = g.renderInnerHTML()
       })
 
       Adapter.handleFetchQuestions()
@@ -149,7 +149,7 @@ const App = (() => {
 
     static isCorrect(event) {
       event.preventDefault()
-      let gameId = parseInt(App.selectLeftBar.firstChild.dataset.id)
+      let gameId = parseInt(App.selectGameHeader.firstChild.dataset.id)
       let quesId = parseInt(document.getElementById('question').dataset.id)
       let quesObj = Question.all().find(question => question.id == quesId)
       Adapter.handleFetchResponseCreate(gameId, quesId, true)
@@ -168,7 +168,7 @@ const App = (() => {
 
     static isIncorrect(event) {
       event.preventDefault()
-      let gameId = parseInt(App.selectLeftBar.firstChild.dataset.id)
+      let gameId = parseInt(App.selectGameHeader.firstChild.dataset.id)
       let quesId = parseInt(document.getElementById('question').dataset.id)
       let quesObj = Question.all().find(question => question.id == quesId)
       Adapter.handleFetchResponseCreate(gameId, quesId, false)
@@ -178,7 +178,7 @@ const App = (() => {
     }
 
     static completeGame() {
-      let gameId = parseInt(App.selectLeftBar.firstChild.dataset.id)
+      let gameId = parseInt(App.selectGameHeader.firstChild.dataset.id)
       let gameObj = Game.all().find(g => g.id == gameId)
       let newGameButton = document.createElement('button')
       newGameButton.type = "button"
