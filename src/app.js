@@ -1,3 +1,4 @@
+let index = 0;
 const App = (() => {
   return class App {
     static init() {
@@ -5,7 +6,6 @@ const App = (() => {
       App.selectGameForm = document.getElementById('game-form')
       App.selectLeftBar = document.getElementById('left-bar')
       App.selectMainBar = document.getElementById('main-bar')
-      App.selectLRightBar = document.getElementById('right-bar')
       //add event listener to new game form
       $("#game-form").submit(App.handleStartGame);
     }
@@ -42,6 +42,9 @@ const App = (() => {
         if ($(".start-maze-hover")) {
           $(".start-maze-hover").hover(App.startMaze)
         }
+        if ($("#keyboard")) {
+          App.startKeyboard();
+        }
       }
     }
 
@@ -61,7 +64,31 @@ const App = (() => {
       App.isIncorrect(e);
     }
 
+    static startKeyboard(){
+      let arr=document.getElementsByClassName("letter")
+      for(let el of arr){
+        el.addEventListener("click", App.keyboardCallback)
+      }
+    }
 
+    static keyboardCallback(e){
+      e.preventDefault();
+      const spelling=["c", "h", "i", "h", "u", "a", "h", "u", "a"];
+      App.checkLetters(e, spelling)
+    }
+
+    static checkLetters(e, spelling){
+        const key = e.target.innerText;
+        if (spelling[index] === key){
+          index = ++index;
+          if (index === spelling.length){
+            App.isCorrect(e);
+            index=0;
+           }
+           }else{
+             App.isIncorrect(e);
+           }
+         }
 
     static isCorrect(event) {
       event.preventDefault()
