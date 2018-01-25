@@ -1,0 +1,43 @@
+body {
+  background-color: #FF8C00;
+  color: #8A2BE2;
+  margin-top: 30px;
+}
+
+.q-mark{
+  position: relative;
+  margin-left: 550px;
+}
+.websiteFrame {
+    position: fixed;
+    z-index: 990;
+    background-color: #daa520;
+}
+
+#websiteFrameTop {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+}
+
+#websiteFrameRight {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+}
+
+#websiteFrameBottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+}
+
+#websiteFrameLeft {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 20px;
+}

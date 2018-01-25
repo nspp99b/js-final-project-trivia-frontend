@@ -1,5 +1,7 @@
 #game-header {
-
+  background-color: #FF8C00;
+  color: #8A2BE2;
+  margin-top: 30px;
 }
 
 #main-bar {
@@ -11,5 +13,7 @@
 
 button {
  margin: 15px;
- width: 150px
+ width: 150px;
+ color: #daa520;
+ background-color: #8A2BE2;
 }
