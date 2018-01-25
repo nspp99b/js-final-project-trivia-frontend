@@ -6,12 +6,21 @@ const App = (() => {
       App.selectGameForm = document.getElementById('game-form')
       App.selectGameHeader = document.getElementById('game-header')
       App.selectMainBar = document.getElementById('main-bar')
+      //define some sounds
+      App.theme = new Audio('./src/sounds/theme.mp3')
+      App.boing = new Audio('./src/sounds/boing.mp3')
+      App.chching = new Audio('./src/sounds/chching.mp3')
+      App.explosion = new Audio('./src/sounds/explosion.mp3')
+
+      //start theme music baby
+      App.theme.play()
       //add event listener to new game form
       $("#game-form").submit(App.handleStartGame);
     }
 
     static handleStartGame(event){
       event.preventDefault()
+      App.theme.pause()
       App.selectGameForm.style.display = 'none'
 
       Adapter.handleFetchGame(event)
@@ -113,7 +122,8 @@ const App = (() => {
       }
     }
 
-    static endMinefield(e){
+    static endMinefield(e) {
+      App.explosion.play()
       let arr = document.getElementsByClassName('is-incorrect-hover')
       for (let el of arr) {
         el.removeEventListener('pointerenter', App.endMinefield, { once: true});
@@ -154,15 +164,34 @@ const App = (() => {
       let quesObj = Question.all().find(question => question.id == quesId)
       Adapter.handleFetchResponseCreate(gameId, quesId, true)
       App.displayIsCorrectMessage()
-      App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
-      App.addAnswerListeners()
+      // App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
+      // App.addAnswerListeners()
     }
 
     static displayIsCorrectMessage() {
-      alert("Correct!")
+      //alert("Correct!")
+      App.fadeInAndOut('#main-bar', "You got it dude!", 3000);
+    }
+
+
+    static fadeInAndOut(divID, quote, interval) {
+      let quesId = parseInt(document.getElementById('question').dataset.id)
+      let quesObj = Question.all().find(question => question.id == quesId)
+
+      $(divID).fadeOut(500, function() {
+        $(this).html('<img src="https://data.whicdn.com/images/91098181/original.jpg" alt="You got it!" height="395" width="500">')
+        App.chching.play()
+        $(this).fadeIn(1500, function(){
+          $(this).fadeIn(1000, function(){
+            App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
+            App.addAnswerListeners()
+          })
+        });
+      });
     }
 
     static displayIncorrectMessage() {
+      App.boing.play()
       alert("WRONG!")
     }
 

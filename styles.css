@@ -11,9 +11,18 @@
 
 }
 
+h1 {
+  font-family: 'Risque', cursive;
+  font-size: 79px
+}
+
 button {
  margin: 15px;
  width: 150px;
  color: #daa520;
  background-color: #8A2BE2;
+}
+
+label, div {
+  font-family: 'Lato', sans-serif;
 }
