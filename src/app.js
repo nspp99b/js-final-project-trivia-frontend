@@ -45,9 +45,11 @@ const App = (() => {
         if (document.getElementById("start-minefield")) {
           document.addEventListener('pointermove', App.startMinefield, { once: true} )
         }
+        if ($("#keyboard")) {
+          App.startKeyboard();
+        }
       }
     }
-
 
     static startMaze() {
       document.getElementById('end').addEventListener('pointerenter', App.isCorrect)
@@ -80,6 +82,32 @@ const App = (() => {
       }
       setTimeout(function(){App.isIncorrect(e)}, 150)
     }
+
+    static startKeyboard(){
+let arr=document.getElementsByClassName("letter")
+for(let el of arr){
+el.addEventListener("click", App.keyboardCallback)
+}
+}
+
+static keyboardCallback(e){
+e.preventDefault();
+const spelling=["c", "h", "i", "h", "u", "a", "h", "u", "a"];
+App.checkLetters(e, spelling)
+}
+
+static checkLetters(e, spelling){
+const key = e.target.innerText;
+if (spelling[index] === key){
+  index = ++index;
+  if (index === spelling.length){
+    App.isCorrect(e);
+    index=0;
+   }
+   }else{
+     App.isIncorrect(e);
+   }
+ }
 
     static isCorrect(event) {
       event.preventDefault()
