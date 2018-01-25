@@ -73,6 +73,12 @@
     top: 100%;
 }
 
+.position7{
+  position: relative;
+  left: 10%;
+  top: 50%;
+}
+
 /* div {
   border: 2px solid green;
 } */

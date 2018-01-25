@@ -42,11 +42,12 @@ const App = (() => {
         if ($(".start-maze-hover")) {
           $(".start-maze-hover").hover(App.startMaze)
         }
-        if ($("#keyboard")) {
-          App.startKeyboard();
+        if (document.getElementById("start-minefield")) {
+          document.addEventListener('pointermove', App.startMinefield, { once: true} )
         }
       }
     }
+
 
     static startMaze() {
       document.getElementById('end').addEventListener('pointerenter', App.isCorrect)
@@ -64,31 +65,21 @@ const App = (() => {
       App.isIncorrect(e);
     }
 
-    static startKeyboard(){
-      let arr=document.getElementsByClassName("letter")
-      for(let el of arr){
-        el.addEventListener("click", App.keyboardCallback)
+    static startMinefield() {
+      document.getElementById('flag').addEventListener('pointerenter', App.isCorrect)
+      let arr = document.getElementsByClassName('is-incorrect-hover')
+      for (let el of arr) {
+        el.addEventListener('pointerenter', App.endMinefield, { once: true})
       }
     }
 
-    static keyboardCallback(e){
-      e.preventDefault();
-      const spelling=["c", "h", "i", "h", "u", "a", "h", "u", "a"];
-      App.checkLetters(e, spelling)
+    static endMinefield(e){
+      let arr = document.getElementsByClassName('is-incorrect-hover')
+      for (let el of arr) {
+        el.removeEventListener('pointerenter', App.endMinefield, { once: true});
+      }
+      setTimeout(function(){App.isIncorrect(e)}, 150)
     }
-
-    static checkLetters(e, spelling){
-        const key = e.target.innerText;
-        if (spelling[index] === key){
-          index = ++index;
-          if (index === spelling.length){
-            App.isCorrect(e);
-            index=0;
-           }
-           }else{
-             App.isIncorrect(e);
-           }
-         }
 
     static isCorrect(event) {
       event.preventDefault()
