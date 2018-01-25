@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Mrs+Saint+Delafield" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Risque" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
@@ -20,20 +20,24 @@
   </head>
   <body>
 
-    <form class="text-center" action="index.html" method="post" id="game-form">
-      <label for="username">Enter Your Name to Begin a New Game!</label>
-      <br>
-      <input type="text" name="username" placeholder="Name">
-      <input type="submit" name="start-game" value="Start Game">
-    </form>
-
     <div class="container-fluid">
-      <div class="page-header text-center" id="game-header">
+      <div class="page-header text-center" id="page-top">
+        <h1>Trivial*</h1>
       </div>
+      <div class="page-header text-center" id="game-header">
+        <form class="text-center" action="index.html" method="post" id="game-form">
+          <label for="username">Enter Your Name to Begin a New Game!</label>
+          <br>
+          <input type="text" name="username" placeholder="Name">
+          <input type="submit" name="start-game" value="Start Game">
+        </form>
+      </div>
+
       <div class="col-md-12 text-center center-block" id="main-bar">
       </div>
     </div>
 
     <script type="text/javascript" src="src/app.js"></script>
+    
   </body>
 </html>

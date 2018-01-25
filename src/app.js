@@ -12,7 +12,7 @@ const App = (() => {
       App.chching = new Audio('./src/sounds/chching.mp3')
       App.explosion = new Audio('./src/sounds/explosion.mp3')
 
-      //start theme music
+      //start theme music baby
       App.theme.play()
       //add event listener to new game form
       $("#game-form").submit(App.handleStartGame);

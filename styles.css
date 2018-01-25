@@ -9,6 +9,11 @@
 
 }
 
+h1 {
+  font-family: 'Risque', cursive;
+  font-size: 79px
+}
+
 button {
  margin: 15px;
  width: 150px
