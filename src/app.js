@@ -154,12 +154,29 @@ const App = (() => {
       let quesObj = Question.all().find(question => question.id == quesId)
       Adapter.handleFetchResponseCreate(gameId, quesId, true)
       App.displayIsCorrectMessage()
-      App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
-      App.addAnswerListeners()
+      // App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
+      // App.addAnswerListeners()
     }
 
     static displayIsCorrectMessage() {
-      alert("Correct!")
+      //alert("Correct!")
+      App.fadeInAndOut('#main-bar', "You got it dude!", 3000);
+    }
+
+
+    static fadeInAndOut(divID, quote, interval) {
+      let quesId = parseInt(document.getElementById('question').dataset.id)
+      let quesObj = Question.all().find(question => question.id == quesId)
+
+      $(divID).fadeOut(500, function() {
+        $(this).html('<img src="https://data.whicdn.com/images/91098181/original.jpg" alt="You got it!" height="395" width="500">')
+        $(this).fadeIn(1500, function(){
+          $(this).fadeIn(1000, function(){
+            App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
+            App.addAnswerListeners()
+          })
+        });
+      });
     }
 
     static displayIncorrectMessage() {

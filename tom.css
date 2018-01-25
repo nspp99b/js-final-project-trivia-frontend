@@ -13,7 +13,7 @@
 
 .position1 img {
    position: absolute;
-   left: 10px;
+   left: 10%;
    top: 50px;
 }
 
@@ -25,7 +25,7 @@
 
 .position3 img {
    position: absolute;
-   left: 5px;
+   left: 10%;
    top: 300px;
 }
 
