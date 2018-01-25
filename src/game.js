@@ -14,7 +14,7 @@ const Game = (() => {
     }
 
     renderFinalScore() {
-      return `<div class="end-game">Score: ${this.score}</div>`
+      return `<div class="end-game">Final Score: ${this.score}</div>`
     }
 
     static all() {
