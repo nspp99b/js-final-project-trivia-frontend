@@ -1,0 +1,36 @@
+.text {
+ verticle-align: middle;
+ color: white;
+}
+
+.hidden img {
+ visibility: hidden;
+}
+
+.visible img {
+ visibility: visible;
+}
+
+.position1 img {
+   position: absolute;
+   left: 10px;
+   top: 50px;
+}
+
+.position2 img {
+   position: absolute;
+   left: 300px;
+   top: 50px;
+}
+
+.position3 img {
+   position: absolute;
+   left: 5px;
+   top: 300px;
+}
+
+.position4 img {
+   position: absolute;
+   left: 400px;
+   top: 300px;
+}

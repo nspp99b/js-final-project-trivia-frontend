@@ -48,6 +48,44 @@ const App = (() => {
         if ($("#keyboard")) {
           App.startKeyboard();
         }
+        if (document.getElementById('tom')) {
+          App.startTomQuestion()
+        }
+      }
+    }
+
+    static makeVisibile(image, num){
+     image.className = `text-center visible position${num}`
+    }
+
+    static makeHidden(image) {
+     image.className = `text-center hidden`
+    }
+
+    static startTomQuestion() {
+      let allImages = document.getElementsByTagName("img")
+      let i = 0;
+
+      let vis = setInterval(function() {
+         let currentImage = allImages[i++];
+         App.makeVisibile(currentImage,i)
+         if(i >= allImages.length) i = 0;
+      }, 1000);
+
+      let j = 0;
+      let invis = setInterval(function() {
+         let currentImage = allImages[j++];
+         App.makeHidden(currentImage)
+         if(j >= allImages.length) j = 0;
+      }, 1500);
+
+      let toms = document.getElementsByClassName('tom')
+
+      for (let tom of toms) {
+        tom.addEventListener('click', function(){
+          clearInterval(invis);
+          clearInterval(vis);
+        })
       }
     }
 
@@ -83,31 +121,31 @@ const App = (() => {
       setTimeout(function(){App.isIncorrect(e)}, 150)
     }
 
-    static startKeyboard(){
-let arr=document.getElementsByClassName("letter")
-for(let el of arr){
-el.addEventListener("click", App.keyboardCallback)
-}
-}
+    static startKeyboard() {
+      let arr=document.getElementsByClassName("letter")
+      for(let el of arr) {
+        el.addEventListener("click", App.keyboardCallback)
+      }
+    }
 
-static keyboardCallback(e){
-e.preventDefault();
-const spelling=["c", "h", "i", "h", "u", "a", "h", "u", "a"];
-App.checkLetters(e, spelling)
-}
+    static keyboardCallback(e) {
+      e.preventDefault();
+      const spelling=["c", "h", "i", "h", "u", "a", "h", "u", "a"];
+      App.checkLetters(e, spelling)
+    }
 
-static checkLetters(e, spelling){
-const key = e.target.innerText;
-if (spelling[index] === key){
-  index = ++index;
-  if (index === spelling.length){
-    App.isCorrect(e);
-    index=0;
-   }
-   }else{
-     App.isIncorrect(e);
-   }
- }
+    static checkLetters(e, spelling) {
+      const key = e.target.innerText;
+      if (spelling[index] === key) {
+        index = ++index;
+        if (index === spelling.length) {
+          App.isCorrect(e);
+          index=0;
+        }
+      } else {
+        App.isIncorrect(e);
+      }
+    }
 
     static isCorrect(event) {
       event.preventDefault()
