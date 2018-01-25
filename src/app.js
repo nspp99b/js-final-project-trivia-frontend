@@ -180,6 +180,7 @@ const App = (() => {
 
       $(divID).fadeOut(500, function() {
         $(this).html('<img src="https://data.whicdn.com/images/91098181/original.jpg" alt="You got it!" height="395" width="500">')
+        App.chching.play()
         $(this).fadeIn(1500, function(){
           $(this).fadeIn(1000, function(){
             App.selectMainBar.innerHTML = quesObj.renderNextQuestion()
