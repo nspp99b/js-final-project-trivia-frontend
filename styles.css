@@ -1,6 +1,7 @@
-h1 {
+h1, h3 {
   font-family: 'Risque', cursive;
-  font-size: 79px
+  font-size: 79px;
+  text-shadow: 2px 2px #ff0000;
 }
 
 button {
