@@ -24,7 +24,6 @@ const Question = (() => {
     } else {
       return App.completeGame()
     }
-
   }
 }
 })()

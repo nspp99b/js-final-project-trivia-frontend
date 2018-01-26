@@ -48,7 +48,13 @@ class Adapter {
       })
   }
 
-  static handleEndGame(){
-    
+  static handleFetchHighScores() {
+    return fetch('http://localhost:3000/api/v1/games',
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(response => response.json())
   }
 }

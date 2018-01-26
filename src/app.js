@@ -216,9 +216,26 @@ const App = (() => {
       Adapter.handleFetchGameUpdate(gameId)
         .then((jsonGame) => {
           gameObj.score = jsonGame.score
-          App.selectMainBar.innerHTML = gameObj.renderFinalScore()
+          App.selectGameHeader.innerHTML = gameObj.renderFinalScore()
+          App.selectMainBar.innerText = ""
+          App.displayHighScores()
           App.selectMainBar.appendChild(newGameButton)
           newGameButton.addEventListener('click', App.handleWindowReload)
+        })
+    }
+
+    static displayHighScores() {
+      let highScores = document.createElement('div')
+      highScores.innerText = "HIGH SCORES"
+      App.selectMainBar.appendChild(highScores)
+      Adapter.handleFetchHighScores()
+        .then((jsonGames) => {
+          for (let el of jsonGames) {
+            let g = new Game(el);
+            let r = document.createElement('h6')
+            r.innerHTML = g.renderFinalScore()
+            highScores.appendChild(r)
+          }
         })
     }
 

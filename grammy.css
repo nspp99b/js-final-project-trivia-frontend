@@ -1,6 +1,6 @@
 .text {
   verticle-align: middle;
-  color: white;
+  color: '#FF8C00';
 }
 .square-grammy {
   width: 120px;
@@ -22,7 +22,6 @@
   border-radius: 100px;
   text-align: center;
   line-height:100px;
-
 }
 
 .circle-large {

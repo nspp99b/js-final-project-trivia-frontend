@@ -1,9 +1,3 @@
-#game-header {
-  background-color: #FF8C00;
-  color: #8A2BE2;
-  margin-top: 30px;
-}
-
 h1 {
   font-family: 'Risque', cursive;
   font-size: 79px
@@ -16,6 +10,12 @@ button {
  background-color: #8A2BE2;
 }
 
-label, div {
+label div {
   font-family: 'Lato', sans-serif;
+}
+
+#game-header {
+  background-color: #FF8C00;
+  color: #8A2BE2;
+  margin-top: 30px;
 }
