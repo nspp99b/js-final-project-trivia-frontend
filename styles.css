@@ -19,3 +19,14 @@ label div {
   color: #8A2BE2;
   margin-top: 30px;
 }
+
+#score-div {
+  border: 10px solid white;
+  border-radius: 10px;
+}
+
+#game-container {
+  border: 10px solid white;
+  border-radius: 20px;
+  padding-bottom: 20px
+}

@@ -225,16 +225,19 @@ const App = (() => {
     }
 
     static displayHighScores() {
-      let highScores = document.createElement('div')
+      let highScores = document.createElement('h3')
       highScores.innerText = "HIGH SCORES"
       App.selectMainBar.appendChild(highScores)
+      let scoreDiv = document.createElement('div')
+      scoreDiv.id = "score-div"
+      highScores.append(scoreDiv)
       Adapter.handleFetchHighScores()
         .then((jsonGames) => {
           for (let el of jsonGames) {
             let g = new Game(el);
             let r = document.createElement('h6')
             r.innerHTML = g.renderFinalScore()
-            highScores.appendChild(r)
+            scoreDiv.appendChild(r)
           }
         })
     }
