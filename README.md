@@ -4,6 +4,7 @@
 Trivial is 10 unconventional trivia questions with a 70s game show theme
 
 The front end is made with ES6 Vanilla JS
+
 The back end can be found here https://github.com/nspp99b/js-final-project-trivia-backend-api
 
 ## Demo
