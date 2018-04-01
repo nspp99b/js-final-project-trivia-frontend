@@ -6,8 +6,8 @@ Trivial is 10 unconventional trivia questions with a 70s game show theme
 The front end is made with ES6 Vanilla JS
 The back end can be found here https://github.com/nspp99b/js-final-project-trivia-backend-api
 
-# Demo
-<a href="https://youtu.be/TCcth7yQ0b4" target="_blank"></a>
+## Demo
+https://youtu.be/TCcth7yQ0b4
 
 ## Using the Site
 To begin the user must type their name and click the start game button. 
@@ -15,14 +15,14 @@ As they continue they will receive the instructions for each question and when c
 It will then move to the following question and at the end report the user's score.
 You can play again after completing the game.
 
-# Installation 
+## Installation 
 First, ensure that you have the back end up and running: https://github.com/nspp99b/js-final-project-trivia-backend-api
 
 1. Clone down to your computer. 
 2. CD into project folder on your computer from your terminal.
 3. Open index.html in your preferred browser
 
-# Contributing 
+## Contributing 
 1. Fork it!
 2. Create your feature branch: git checkout -b my-new-feature
 3. Commit your changes: git commit -am 'Add some feature'
@@ -35,7 +35,7 @@ Alison Mackay | Humzah Choudry | Shahin Motia
 ## Acknowledgments
 Thank you to our classmates and instructors at the Flatiron School.
 
-# License 
+## License 
 The MIT License (MIT)
 
 Copyright (c) 2018 Alison Mackay | Humzah Choudry | Shahin Motia
