@@ -14,7 +14,7 @@ https://youtu.be/TCcth7yQ0b4
 To begin the user must type their name and click the start game button. 
 As they continue they will receive the instructions for each question and when completed it will alert the user if they answered correctly or not.
 It will then move to the following question and at the end report the user's score.
-You can play again after completing the game.
+The user can play again after completing the game.
 
 ## Installation 
 First, ensure that you have the back end up and running: https://github.com/nspp99b/js-final-project-trivia-backend-api
